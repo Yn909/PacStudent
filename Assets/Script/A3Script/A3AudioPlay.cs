@@ -5,7 +5,7 @@ using UnityEngine;
 public class A3AudioPlay : MonoBehaviour
 {
     public AudioClip StartAU, NomalAu;
-    private AudioSource audio;
+    private new AudioSource audio;
     private bool iSPlayStartAU = false;
     // Start is called before the first frame update
     void Start()
