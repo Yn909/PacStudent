@@ -8,6 +8,11 @@ public class Cherry : MonoBehaviour
     Transform taget;
     public void Start()
     {
+        GamePanel.AddList("Gameover", () =>
+        {
+            tweener.StopTween(transform);
+            Destroy(gameObject);
+        });
       switch(transform.parent.name)
         {
             case "Point1":

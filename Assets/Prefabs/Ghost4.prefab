@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2008216886700966721}
   - component: {fileID: 5310936221163662030}
   - component: {fileID: 2950551378105147916}
+  - component: {fileID: 7549840676554775627}
+  - component: {fileID: 7230230706040186588}
   m_Layer: 0
   m_Name: Ghost4
   m_TagString: Untagged
@@ -152,3 +154,47 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.30348104, y: 0.30348107}
   m_EdgeRadius: 0
+--- !u!114 &7549840676554775627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8233823046953150700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719be0989acdc2042becc203dea7f14c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aim: {fileID: 0}
+  WayPoint:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  remainder: 0
+  time: 0.5
+--- !u!114 &7230230706040186588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8233823046953150700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f8ea9dedd43f743b199f4378321633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

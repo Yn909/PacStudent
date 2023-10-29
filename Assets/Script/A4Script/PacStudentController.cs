@@ -11,15 +11,24 @@ public class PacStudentController : MonoBehaviour
   [SerializeField]  private float time = 0.1F;
     public bool iSCollionWall = true;
     public LayerMask layer;
+    Vector3 startpos;
+    Quaternion startqu;
     public AudioSource MoveAu,WithWallAu, EatingPelletAu;
     public ParticleSystem Dirt1, Collision1,Dirt2,Collisionl2, Dirt3, Collision13, Dirt4, Collisionl4;
     private void Awake()
     {
+        MoveAu = GameObject.Find("PlayerMove").GetComponent<AudioSource>();
+        WithWallAu = GameObject.Find("PlayerWithWall").GetComponent<AudioSource>();
+        EatingPelletAu = GameObject.Find("AuPellet").GetComponent<AudioSource>();
+        startpos = transform.position;
+        startqu = transform.rotation;
         Init();
     }
     // Update is called once per frame
     void Update()
     {
+        if (GamePanel.GetStart() == false)
+            return;
         PlayerInput();
         iSTowards();
     }
@@ -27,7 +36,7 @@ public class PacStudentController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Pellet")
         {
-            GamePanel.score++;
+            GamePanel.score+=10;
             EatingPelletAu.Play();
             GamePanel.Fire("UpdateScore");
             Destroy(collision.gameObject);
@@ -39,8 +48,17 @@ public class PacStudentController : MonoBehaviour
             GamePanel.Fire("UpdateScore");
             Destroy(collision.gameObject);
         }
+        if(collision.gameObject.tag== "PowerPellet")
+        {
+            GamePanel.Fire("GhostChange");
+            Destroy(collision.gameObject);
+        }
+        if(collision.gameObject.tag=="Ghost")
+        {
+            GamePanel.Fire("Over");
+            Destroy(gameObject);
 
-
+        }
     }
     private void PlayerInput()
     {
@@ -217,4 +235,5 @@ public class PacStudentController : MonoBehaviour
         aim = GetComponent<Animator>();
         tweener = GetComponent<Tweener>();
     }
+
 }

@@ -10,12 +10,17 @@ public class CherryManage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GamePanel.AddList("Gameover", () =>
+        {
+            Destroy(gameObject);
+        });
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GamePanel.GetStart()== false)
+            return;
         InitCherry();
     }
     public void InitCherry()
