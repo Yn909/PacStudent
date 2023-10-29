@@ -15,22 +15,37 @@ public class GamePanel : MonoBehaviour
     public static int score=0;
     private bool iSStart = false;
     private bool iSGameOver=false;
-    public static Dictionary<string, UnityEvent> EventCenter = new Dictionary<string, UnityEvent>();
+    public List<Image> lives = new List<Image>();
+    public static int live = 3;
+    public static Dictionary<string, UnityAction> EventCenter = new Dictionary<string,UnityAction>();
     // Start is called before the first frame update
     void Start()
     {
-      
+        AddList("UpdateScore", UpDateScore);
+    }
+    public void UpDateScore()
+    {
+        Score.text = "Score:"+ score.ToString();
     }
     public static void AddList(string name,UnityAction ac)
     {
-        EventCenter[name].AddListener(ac);
+        if (EventCenter.ContainsKey(name))
+        {
+            EventCenter[name] += ac;
+        }
+        else EventCenter.Add(name, ac);
+       
     }
     public static void RemoveList(string name,UnityAction ac)
     {
-        EventCenter[name].RemoveListener(ac);
+        if (EventCenter.ContainsKey(name))
+        {
+            EventCenter[name] -= ac;
+        }
     }
     public static void Fire(string name)
     {
+        if(EventCenter.ContainsKey(name))
         EventCenter[name]?.Invoke();
     }
     private void OnEnable()
@@ -85,6 +100,7 @@ public class GamePanel : MonoBehaviour
     }
     private void OnDestroy()
     {
+        RemoveList("UpdateScore", Update);
         score = 0;
     }
 }
